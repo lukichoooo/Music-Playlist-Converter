@@ -13,10 +13,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
-                .authorizeHttpRequests()
-                .anyRequest().authenticated()
-                .and().oauth2Login();
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().authenticated() // require login everywhere
+                )
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/oauth2/authorization/google") // force Google login
+                        .defaultSuccessUrl("/loginSuccess", true));
 
         return http.build();
     }

@@ -55,3 +55,7 @@ dump.rdb
 # Other
 *.bak
 *.swp
+Backend/PlaylistConverter/.env
+Backend/PlaylistConverter/src/main/resources/application.properties
+Backend/PlaylistConverter/.env
+Backend/PlaylistConverter/src/main/resources/application.properties
